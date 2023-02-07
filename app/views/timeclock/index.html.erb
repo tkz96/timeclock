@@ -8,5 +8,13 @@
     });
 </script>
 
-<%#= form_with(model: worker) do |form| %>
-<%# end %>
+<p>Select Your ID</p>
+
+
+<%= form_with model: @worker, method: :patch do |form| %>
+  <%= form.select "worker_id", options_from_collection_for_select(@workers, :id, :id) %>
+  <%= form.label "Active?" %>
+  <%= form.check_box :status_active %>
+  <%= form.submit %>
+
+<% end %>

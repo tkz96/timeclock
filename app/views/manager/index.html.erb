@@ -13,7 +13,7 @@
       <td><%= worker.id %></td>
       <td><%= worker.name %></td>
 <!--      <td><%#= worker.total_time %></td>-->
-<!--      <td style="background-color: <%#= worker.status ? 'green' : 'red' %>"><%#= worker.status ? 'Active' : 'Inactive' %></td>-->
+      <td style="background-color: <%= worker.status_active ? 'green' : 'red' %>"><%= worker.status_active ? 'Active' : 'Inactive' %></td>
     </tr>
   <% end %>
 </table>
