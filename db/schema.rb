@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_06_184748) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_07_172909) do
+  create_table "timeclocks", force: :cascade do |t|
+    t.integer "worker_id_id", null: false
+    t.datetime "punch_in"
+    t.datetime "punch_out"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["worker_id_id"], name: "index_timeclocks_on_worker_id_id"
+  end
+
   create_table "workers", force: :cascade do |t|
     t.string "name"
     t.date "date_of_birth"
@@ -18,4 +27,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_06_184748) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "timeclocks", "worker_ids"
 end
