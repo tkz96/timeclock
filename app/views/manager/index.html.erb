@@ -2,8 +2,8 @@
 
 <table>
   <tr>
-    <th>Name</th>
     <th>ID</th>
+    <th>Name</th>
     <th>Total Time</th>
     <th>Status</th>
   </tr>
@@ -12,8 +12,8 @@
     <tr>
       <td><%= worker.id %></td>
       <td><%= worker.name %></td>
-      <td><%= worker.total_time %></td>
-      <td style="background-color: <%= worker.status ? 'green' : 'red' %>"><%= worker.status ? 'Active' : 'Inactive' %></td>
+<!--      <td><%#= worker.total_time %></td>-->
+<!--      <td style="background-color: <%#= worker.status ? 'green' : 'red' %>"><%#= worker.status ? 'Active' : 'Inactive' %></td>-->
     </tr>
   <% end %>
 </table>
