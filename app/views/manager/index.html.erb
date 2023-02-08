@@ -1,0 +1,19 @@
+<h1>Audit View for Managers</h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Total Time (HH:MM:SS)</th>
+    <th>Status</th>
+  </tr>
+
+  <% @workers.each do |worker| %>
+    <tr>
+      <td><%= worker.id %></td>
+      <td><%= worker.name %></td>
+      <td><%= worker.duration %></td>
+      <td style="color: white; background-color: <%= worker.status_active ? '#28be25' : '#be2528' %>"><%= worker.status_active ? 'Active' : 'Inactive' %></td>
+    </tr>
+  <% end %>
+</table>

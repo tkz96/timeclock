@@ -1,0 +1,12 @@
+<h1>Timeclock</h1>
+
+<%= render partial:"shared/clock" %>
+
+<%= form_tag '/timeclock/punch_in', id: 'timeclock-form' do %>
+  <div>
+    <%= select_tag 'worker_id', options_for_select(Worker.all.pluck(:id)), prompt: "- Please Select Your ID -" %>
+  </div>
+  <div>
+    <%= submit_tag ('Punch') %>
+  </div>
+<% end %>
