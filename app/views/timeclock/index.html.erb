@@ -1,3 +1,5 @@
+<h1>Timeclock</h1>
+
 <div id="clock"></div>
 
 <script>
@@ -8,12 +10,12 @@
     });
 </script>
 
-<h1>Timeclock</h1>
+
+<p style="color: green"><%= notice %></p>
+
 
 <%= form_tag '/timeclock/punch_in', id: 'timeclock-form' do %>
   <div>
-    <%#= label_tag 'Worker ID' %>
-    <%#= text_field_tag 'worker_id' %>
     <%= select_tag 'worker_id', options_for_select(Worker.all.pluck(:id)), prompt: "- Please Select Your ID -" %>
   </div>
   <div>
