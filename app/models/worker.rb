@@ -1,9 +1,9 @@
 # app/models/worker.rb
 class Worker < ApplicationRecord
   def duration
-    if punch_in_time.present? && punch_out_time.present?
-      time_diff(punch_in_time, punch_out_time)
-    end
+    return unless punch_in_time.present? && punch_out_time.present?
+
+    time_diff(punch_in_time, punch_out_time)
   end
 
   def time_diff(punch_in_time, punch_out_time)

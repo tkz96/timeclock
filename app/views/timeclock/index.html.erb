@@ -1,24 +1,12 @@
 <h1>Timeclock</h1>
 
-<div id="clock"></div>
-
-<script>
-    $(document).ready(function() {
-        setInterval(function() {
-            $("#clock").html(new Date().toLocaleTimeString());
-        }, 1000);
-    });
-</script>
-
-
-<p style="color: green"><%= notice %></p>
-
+<%= render partial:"shared/clock" %>
 
 <%= form_tag '/timeclock/punch_in', id: 'timeclock-form' do %>
   <div>
     <%= select_tag 'worker_id', options_for_select(Worker.all.pluck(:id)), prompt: "- Please Select Your ID -" %>
   </div>
   <div>
-    <%= submit_tag (@worker.present? && @worker.status_active ? 'Punch Out' : 'Punch In') %>
+    <%= submit_tag ('Punch') %>
   </div>
 <% end %>

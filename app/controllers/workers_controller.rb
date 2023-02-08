@@ -1,5 +1,5 @@
 class WorkersController < ApplicationController
-  before_action :set_worker, only: %i[ show edit update destroy ]
+  before_action :set_worker, only: %i[show edit update destroy]
 
   # GET /workers or /workers.json
   def index
@@ -7,8 +7,7 @@ class WorkersController < ApplicationController
   end
 
   # GET /workers/1 or /workers/1.json
-  def show
-  end
+  def show; end
 
   # GET /workers/new
   def new
@@ -16,8 +15,7 @@ class WorkersController < ApplicationController
   end
 
   # GET /workers/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /workers or /workers.json
   def create
@@ -25,7 +23,7 @@ class WorkersController < ApplicationController
 
     respond_to do |format|
       if @worker.save
-        format.html { redirect_to worker_url(@worker), notice: "Worker was successfully created." }
+        format.html { redirect_to worker_url(@worker), notice: 'Worker was successfully created.' }
         format.json { render :show, status: :created, location: @worker }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +36,7 @@ class WorkersController < ApplicationController
   def update
     respond_to do |format|
       if @worker.update(worker_params)
-        format.html { redirect_to worker_url(@worker), notice: "Worker was successfully updated." }
+        format.html { redirect_to worker_url(@worker), notice: 'Worker was successfully updated.' }
         format.json { render :show, status: :ok, location: @worker }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +50,20 @@ class WorkersController < ApplicationController
     @worker.destroy
 
     respond_to do |format|
-      format.html { redirect_to workers_url, notice: "Worker was successfully destroyed." }
+      format.html { redirect_to workers_url, notice: 'Worker was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_worker
-      @worker = Worker.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def worker_params
-      params.require(:worker).permit(:name, :date_of_birth, :status_active)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_worker
+    @worker = Worker.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def worker_params
+    params.require(:worker).permit(:name, :date_of_birth, :status_active)
+  end
 end

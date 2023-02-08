@@ -1,0 +1,9 @@
+<div id="clock"></div>
+
+<script>
+    $(document).ready(function() {
+        setInterval(function() {
+            $("#clock").html(new Date().toLocaleTimeString());
+        }, 1000);
+    });
+</script>
