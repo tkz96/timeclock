@@ -36,13 +36,15 @@ class WorkersController < ApplicationController
 
   # PATCH/PUT /workers/1 or /workers/1.json
   def update
-    @worker = Worker.find(params[:id])
-    if @worker.update(worker_params)
-      redirect_to workers_path
-    else
-      render 'edit'
+    respond_to do |format|
+      if @worker.update(worker_params)
+        format.html { redirect_to worker_url(@worker), notice: "Worker was successfully updated." }
+        format.json { render :show, status: :ok, location: @worker }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @worker.errors, status: :unprocessable_entity }
+      end
     end
-
   end
 
   # DELETE /workers/1 or /workers/1.json
@@ -63,6 +65,6 @@ class WorkersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def worker_params
-      params.require(:worker).permit(:name, :date_of_birth, :status)
+      params.require(:worker).permit(:name, :date_of_birth, :status_active)
     end
 end

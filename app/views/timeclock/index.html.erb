@@ -8,13 +8,15 @@
     });
 </script>
 
-<p>Select Your ID</p>
+<h1>Timeclock</h1>
 
-
-<%= form_with model: @worker, method: :patch do |form| %>
-  <%= form.select "worker_id", options_from_collection_for_select(@workers, :id, :id) %>
-  <%= form.label "Active?" %>
-  <%= form.check_box :status_active %>
-  <%= form.submit %>
-
+<%= form_tag '/timeclock/punch_in', id: 'timeclock-form' do %>
+  <div>
+    <%#= label_tag 'Worker ID' %>
+    <%#= text_field_tag 'worker_id' %>
+    <%= select_tag 'worker_id', options_for_select(Worker.all.pluck(:id)), prompt: "- Please Select Your ID -" %>
+  </div>
+  <div>
+    <%= submit_tag (@worker.present? && @worker.status_active ? 'Punch Out' : 'Punch In') %>
+  </div>
 <% end %>
